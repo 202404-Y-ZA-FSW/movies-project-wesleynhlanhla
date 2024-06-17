@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, TextField } from '@mui/material';
 import axios from 'axios';
 import { apiKey } from '../Util/API';
@@ -7,7 +6,7 @@ import { apiKey } from '../Util/API';
 const Navbar = () => {
     const [genres, setGenres] = useState([]);
     const [anchorEl, setAnchorEl] = useState(null);
-    
+    const [moviesAnchorEl, setMoviesAnchorEl] = useState(null);
 
     useEffect(() => {
         const fetchGenres = async () => {
@@ -23,6 +22,14 @@ const Navbar = () => {
 
     const handleMenuClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleMoviesMenuOpen = (event) => {
+        setMoviesAnchorEl(event.currentTarget);
+    };
+
+    const handleMoviesMenuClose = () => {
+        setMoviesAnchorEl(null);
     };
 
     const handleSearch = (event) => {
@@ -42,16 +49,21 @@ const Navbar = () => {
                 </Button>
                 <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                     {genres.map((genre) => (
-                        <MenuItem key={genre.id} >
-                            {genre.name}
-                        </MenuItem>
+                        <MenuItem key={genre.id}>{genre.name}</MenuItem>
                     ))}
                 </Menu>
-                <Button color="inherit" onClick={() => {}}>Top Rated</Button>
-                <Button color="inherit" onClick={() => {}}>Popular</Button>
-                <Button color="inherit" onClick={() => {}}>Latest</Button>
-                <Button color="inherit" onClick={() => {}}>Now Playing</Button>
-                <Button color="inherit" onClick={() => {}}>Upcoming</Button>
+                <Button color="inherit" onClick={handleMoviesMenuOpen}>
+                    Movies
+                </Button>
+                <Menu anchorEl={moviesAnchorEl} open={Boolean(moviesAnchorEl)} onClose={handleMoviesMenuClose}>
+                    <MenuItem onClick={handleMoviesMenuClose}>Top Rated</MenuItem>
+                    <MenuItem onClick={handleMoviesMenuClose}>Popular</MenuItem>
+                    <MenuItem onClick={handleMoviesMenuClose}>Latest</MenuItem>
+                    <MenuItem onClick={handleMoviesMenuClose}>Now Playing</MenuItem>
+                    <MenuItem onClick={handleMoviesMenuClose}>Upcoming</MenuItem>
+                </Menu>
+                <Button color="inherit" onClick={() => {}}>About us</Button>
+                <Button color="inherit" onClick={() => {}}>Contact us</Button>
                 <Button color="inherit" onClick={() => {}}>Actors</Button>
                 <TextField
                     variant="outlined"
@@ -66,4 +78,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
