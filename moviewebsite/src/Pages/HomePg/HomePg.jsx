@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchMovies } from '../services/MovieService';
+import { fetchMovies } from '../../Util/API';
 
 
 const HomePage = () => {

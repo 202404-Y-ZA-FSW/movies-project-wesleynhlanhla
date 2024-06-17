@@ -1,20 +1,3 @@
-// // src/components/Footer/Footer.jsx
-// import React from 'react';
-// import './Footer.css';
-
-// const Footer = () => {
-//   return (
-//     <footer className="footer">
-//       <p>Developed by [Your Name] and Team</p>
-//       <p>
-//         <a href="https://github.com/yourgithub">GitHub</a> | 
-//         <a href="https://linkedin.com/in/yourlinkedin"> LinkedIn</a>
-//       </p>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
 
 import React from 'react';
 import { Container, Typography } from '@mui/material';

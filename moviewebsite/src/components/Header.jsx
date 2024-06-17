@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, TextField } from '@mui/material';
 import axios from 'axios';
-import { apiKey } from '../utils/api';
+import { apiKey } from '../Util/API';
 
 const Navbar = () => {
     const [genres, setGenres] = useState([]);
     const [anchorEl, setAnchorEl] = useState(null);
-    const navigate = useNavigate();
+    
 
     useEffect(() => {
         const fetchGenres = async () => {
-            const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
+            const response = await axios.get(`${apiKey}`);
             setGenres(response.data.genres);
         };
         fetchGenres();
@@ -27,7 +27,7 @@ const Navbar = () => {
 
     const handleSearch = (event) => {
         if (event.key === 'Enter') {
-            navigate(`/search/${event.target.value}`);
+            // navigate(`/search/${event.target.value}`);
         }
     };
 
@@ -42,23 +42,23 @@ const Navbar = () => {
                 </Button>
                 <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
                     {genres.map((genre) => (
-                        <MenuItem key={genre.id} onClick={() => navigate(`/genre/${genre.id}`)}>
+                        <MenuItem key={genre.id} >
                             {genre.name}
                         </MenuItem>
                     ))}
                 </Menu>
-                <Button color="inherit" onClick={() => navigate('/movies/top-rated')}>Top Rated</Button>
-                <Button color="inherit" onClick={() => navigate('/movies/popular')}>Popular</Button>
-                <Button color="inherit" onClick={() => navigate('/movies/latest')}>Latest</Button>
-                <Button color="inherit" onClick={() => navigate('/movies/now-playing')}>Now Playing</Button>
-                <Button color="inherit" onClick={() => navigate('/movies/upcoming')}>Upcoming</Button>
-                <Button color="inherit" onClick={() => navigate('/actors')}>Actors</Button>
+                <Button color="inherit" onClick={() => {}}>Top Rated</Button>
+                <Button color="inherit" onClick={() => {}}>Popular</Button>
+                <Button color="inherit" onClick={() => {}}>Latest</Button>
+                <Button color="inherit" onClick={() => {}}>Now Playing</Button>
+                <Button color="inherit" onClick={() => {}}>Upcoming</Button>
+                <Button color="inherit" onClick={() => {}}>Actors</Button>
                 <TextField
                     variant="outlined"
                     placeholder="Search..."
                     size="small"
                     onKeyDown={handleSearch}
-                    style={{ backgroundColor: 'blue', borderRadius: 4 }}
+                    style={{ backgroundColor: 'white', borderRadius: 4 }}
                 />
             </Toolbar>
         </AppBar>
