@@ -2,14 +2,19 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import MoviesPage from './Pages/MoviesPg/Movies';
-// import DropdownMenu from './DropdownMenu/DropDownMenu';
+import Footer from './components/footer';
+import API from './Util/API'
+import Movies from './MoviesPg/movie'
 
 function App() {
   return (
     <div> 
       <Header />
-      <MoviesPage />
-      {/* <DropdownMenu /> */}
+      {/* <MoviesPage /> */}
+      <Movies/>
+      <Footer />
+      {/* <API /> */}
+      
     </div>
   );
 }

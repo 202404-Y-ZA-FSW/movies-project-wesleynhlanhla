@@ -17,9 +17,9 @@ const HomePage = () => {
     <div>
       <h1>Latest Movies</h1>
       <div className="movie-list">
-        {movies.map((movie) => (
+        {/* {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
-        ))}
+        ))} */}
       </div>
     </div>
   );
