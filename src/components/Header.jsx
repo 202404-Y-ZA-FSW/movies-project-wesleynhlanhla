@@ -1,83 +1,187 @@
+// // import React, { useState, useEffect } from 'react';
+// // import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from '@mui/material';
+// // import { Link, useNavigate } from 'react-router-dom';
+// // import axios from 'axios';
+// // import { apiKey } from '../Util/API';
+// // import './Header.css'; 
+
+// // const Navbar = () => {
+// //   const [genres, setGenres] = useState([]);
+// //   const [anchorEl, setAnchorEl] = useState(null);
+// //   const [moviesAnchorEl, setMoviesAnchorEl] = useState(null);
+// //   const navigate = useNavigate();
+
+// //   useEffect(() => {
+// //     const fetchGenres = async () => {
+// //       try {
+// //         const response = await axios.get(https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey});
+// //         setGenres(response.data.genres);
+// //       } catch (error) {
+// //         console.error("Error fetching genres:", error);
+// //       }
+// //     };
+// //     fetchGenres();
+// //   }, []);
+
+// //   const handleMenuOpen = (event) => {
+// //     setAnchorEl(event.currentTarget);
+// //   };
+
+// //   const handleMenuClose = () => {
+// //     setAnchorEl(null);
+// //   };
+
+// //   const handleMoviesMenuOpen = (event) => {
+// //     setMoviesAnchorEl(event.currentTarget);
+// //   };
+
+// //   const handleMoviesMenuClose = () => {
+// //     setMoviesAnchorEl(null);
+// //   };
+
+// //   const handleCategoryClick = (category) => {
+// //     navigate(/movies?category=${category});
+// //     setMoviesAnchorEl(null);
+// //   };
+
+// //   return (
+// //     <AppBar position="static" sx={{ backgroundColor: 'black' }}>
+// //       <Toolbar>
+// //         <Typography variant="h6" style={{ flexGrow: 1 }}>
+// //           <Link to="/" className="cine-stream-link">
+// //             <span className='neon'>Cine</span><span className='flux'>Stream</span>
+// //           </Link>
+// //         </Typography>
+// //         <Button onClick={handleMoviesMenuOpen}>
+// //           <span className='act'>Movies</span>
+// //         </Button>
+// //         <Menu anchorEl={moviesAnchorEl} open={Boolean(moviesAnchorEl)} onClose={handleMoviesMenuClose}>
+// //           <MenuItem onClick={() => handleCategoryClick('popular')}>
+// //             <span>Popular</span>
+// //           </MenuItem>
+// //           <MenuItem onClick={() => handleCategoryClick('top_rated')}>
+// //             <span>Top Rated</span>
+// //           </MenuItem>
+// //           <MenuItem onClick={() => handleCategoryClick('now_playing')}>
+// //             <span>Now Playing</span>
+// //           </MenuItem>
+// //           <MenuItem onClick={() => handleCategoryClick('upcoming')}>
+// //             <span>Upcoming</span>
+// //           </MenuItem>
+// //           <MenuItem onClick={() => handleCategoryClick('latest')}>
+// //             <span>Latest</span>
+// //           </MenuItem>
+// //         </Menu>
+// //         <Button color="inherit" onClick={handleMenuOpen}>
+// //           <span className='act'>Genres</span> 
+// //         </Button>
+// //         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+// //           {genres.map((genre) => (
+// //             <MenuItem key={genre.id} onClick={handleMenuClose}>
+// //               <Link to={/genre/${genre.id}} style={{ color: 'inherit', textDecoration: 'none' }}>{genre.name}</Link>
+// //             </MenuItem>
+// //           ))}
+// //         </Menu>
+// //         <Button color="inherit">
+// //           <Link to="/actors" className='act'><span>Actors</span></Link>
+// //         </Button>
+// //       </Toolbar>
+// //     </AppBar>
+// //   );
+// // };
+
+// // export default Navbar;
+
 // import React, { useState, useEffect } from 'react';
-// import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, TextField } from '@mui/material';
-// import { fetchMovies, fetchActors, apiKey } from '../Util/API';
+// import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from '@mui/material';
+// import { Link, useNavigate } from 'react-router-dom';
 // import axios from 'axios';
+// import { apiKey } from '../Util/API';
+// import './Header.css'; 
 
 // const Navbar = () => {
-//     const [genres, setGenres] = useState([]);
-//     const [anchorEl, setAnchorEl] = useState(null);
-//     const [moviesAnchorEl, setMoviesAnchorEl] = useState(null);
+//   const [genres, setGenres] = useState([]);
+//   const [anchorEl, setAnchorEl] = useState(null);
+//   const [moviesAnchorEl, setMoviesAnchorEl] = useState(null);
+//   const navigate = useNavigate();
 
-//     useEffect(() => {
-//         const fetchGenres = async () => {
-//             try {
-//                 const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
-//                 setGenres(response.data.genres);
-//             } catch (error) {
-//                 console.error("Error fetching genres:", error);
-//             }
-//         };
-//         fetchGenres();
-//     }, []);
-
-//     const handleMenuOpen = (event) => {
-//         setAnchorEl(event.currentTarget);
+//   useEffect(() => {
+//     const fetchGenres = async () => {
+//       try {
+//         const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
+//         setGenres(response.data.genres);
+//       } catch (error) {
+//         console.error("Error fetching genres:", error);
+//       }
 //     };
+//     fetchGenres();
+//   }, []);
 
-//     const handleMenuClose = () => {
-//         setAnchorEl(null);
-//     };
+//   const handleMenuOpen = (event) => {
+//     setAnchorEl(event.currentTarget);
+//   };
 
-//     const handleMoviesMenuOpen = (event) => {
-//         setMoviesAnchorEl(event.currentTarget);
-//     };
+//   const handleMenuClose = () => {
+//     setAnchorEl(null);
+//   };
 
-//     const handleMoviesMenuClose = () => {
-//         setMoviesAnchorEl(null);
-//     };
+//   const handleMoviesMenuOpen = (event) => {
+//     setMoviesAnchorEl(event.currentTarget);
+//   };
 
-//     const handleSearch = (event) => {
-//         if (event.key === 'Enter') {
-//         }
-//     };
+//   const handleMoviesMenuClose = () => {
+//     setMoviesAnchorEl(null);
+//   };
 
-//     return (
-//         <AppBar position="static">
-//             <Toolbar>
-//                 <Typography variant="h6" style={{ flexGrow: 1 }}>
-//                     MovieWebsite
-//                 </Typography>
-//                 <Button color="inherit" onClick={handleMenuOpen}>
-//                     Genres
-//                 </Button>
-//                 <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-//                     {genres.map((genre) => (
-//                         <MenuItem key={genre.id}>{genre.name}</MenuItem>
-//                     ))}
-//                 </Menu>
-//                 <Button color="inherit" onClick={handleMoviesMenuOpen}>
-//                     Movies
-//                 </Button>
-//                 <Menu anchorEl={moviesAnchorEl} open={Boolean(moviesAnchorEl)} onClose={handleMoviesMenuClose}>
-//                     <MenuItem onClick={() => fetchMovies('top_rated')}>Top Rated</MenuItem>
-//                     <MenuItem onClick={() => fetchMovies('popular')}>Popular</MenuItem>
-//                     <MenuItem onClick={() => fetchMovies('latest')}>Latest</MenuItem>
-//                     <MenuItem onClick={() => fetchMovies('now_playing')}>Now Playing</MenuItem>
-//                     <MenuItem onClick={() => fetchMovies('upcoming')}>Upcoming</MenuItem>
-//                 </Menu>
-//                 <Button color="inherit" onClick={() => {}}>About us</Button>
-//                 <Button color="inherit" onClick={() => {}}>Contact us</Button>
-//                 <Button color="inherit" onClick={() => {}}>Actors</Button>
-//                 <TextField
-//                     variant="outlined"
-//                     placeholder="Search..."
-//                     size="small"
-//                     onKeyDown={handleSearch}
-//                     style={{ backgroundColor: 'white', borderRadius: 4 }}
-//                 />
-//             </Toolbar>
-//         </AppBar>
-//     );
+//   const handleCategoryClick = (category) => {
+//     navigate(`/movies?category=${category}`);
+//     setMoviesAnchorEl(null);
+//   };
+
+//   return (
+//     <AppBar position="static" sx={{ backgroundColor: 'black' }}>
+//       <Toolbar>
+//         <Typography variant="h6" style={{ flexGrow: 1 }}>
+//           <Link to="/" className="cine-stream-link">
+//             <span className='neon'>Cine</span><span className='flux'>Stream</span>
+//           </Link>
+//         </Typography>
+//         <Button onClick={handleMoviesMenuOpen}>
+//           <span className='act'>Movies</span>
+//         </Button>
+//         <Menu anchorEl={moviesAnchorEl} open={Boolean(moviesAnchorEl)} onClose={handleMoviesMenuClose}>
+//           <MenuItem onClick={() => handleCategoryClick('popular')}>
+//             <span>Popular</span>
+//           </MenuItem>
+//           <MenuItem onClick={() => handleCategoryClick('top_rated')}>
+//             <span>Top Rated</span>
+//           </MenuItem>
+//           <MenuItem onClick={() => handleCategoryClick('now_playing')}>
+//             <span>Now Playing</span>
+//           </MenuItem>
+//           <MenuItem onClick={() => handleCategoryClick('upcoming')}>
+//             <span>Upcoming</span>
+//           </MenuItem>
+//           <MenuItem onClick={() => handleCategoryClick('latest')}>
+//             <span>Latest</span>
+//           </MenuItem>
+//         </Menu>
+//         <Button color="inherit" onClick={handleMenuOpen}>
+//           <span className='act'>Genres</span> 
+//         </Button>
+//         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+//           {genres.map((genre) => (
+//             <MenuItem key={genre.id} onClick={handleMenuClose}>
+//               <Link to={`/genre/${genre.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>{genre.name}</Link>
+//             </MenuItem>
+//           ))}
+//         </Menu>
+//         <Button color="inherit">
+//           <Link to="/actors" className='act'><span>Actors</span></Link>
+//         </Button>
+//       </Toolbar>
+//     </AppBar>
+//   );
 // };
 
 // export default Navbar;
@@ -85,234 +189,196 @@
 // SECOND CODE
 
 // import React, { useState, useEffect } from 'react';
-// import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, TextField } from '@mui/material';
-// import { fetchMovies, fetchActors, apiKey } from '../Util/API';
-// import { useNavigate } from 'react-router-dom';
+// import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from '@mui/material';
+// import { Link, useNavigate } from 'react-router-dom';
 // import axios from 'axios';
+// import { apiKey } from '../Util/API';
+// import Searchbar from './SearchbarPg/SearchBar';
+
 
 // const Navbar = () => {
-//     const [genres, setGenres] = useState([]);
-//     const [anchorEl, setAnchorEl] = useState(null);
-//     const [moviesAnchorEl, setMoviesAnchorEl] = useState(null);
-    
+//   const [genres, setGenres] = useState([]);
+//   const [anchorEl, setAnchorEl] = useState(null);
+//   const [moviesAnchorEl, setMoviesAnchorEl] = useState(null);
+//   const navigate = useNavigate();
 
-//     useEffect(() => {
-//         const fetchGenres = async () => {
-//             try {
-//                 const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
-//                 setGenres(response.data.genres);
-//             } catch (error) {
-//                 console.error("Error fetching genres:", error);
-//             }
-//         };
-//         fetchGenres();
-//     }, []);
-
-//     const handleMenuOpen = (event) => {
-//         setAnchorEl(event.currentTarget);
+//   useEffect(() => {
+//     const fetchGenres = async () => {
+//       try {
+//         const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
+//         setGenres(response.data.genres);
+//       } catch (error) {
+//         console.error("Error fetching genres:", error);
+//       }
 //     };
+//     fetchGenres();
+//   }, []);
 
-//     const handleMenuClose = () => {
-//         setAnchorEl(null);
-//     };
+//   const handleMenuOpen = (event) => {
+//     setAnchorEl(event.currentTarget);
+//   };
 
-//     const handleMoviesMenuOpen = (event) => {
-//         setMoviesAnchorEl(event.currentTarget);
-//     };
+//   const handleMenuClose = () => {
+//     setAnchorEl(null);
+//   };
 
-//     const handleMoviesMenuClose = () => {
-//         setMoviesAnchorEl(null);
-//     };
-//     const SearchBar = () => {
-//         const [query, setQuery] = useState('');
-//         const navigate = useNavigate();
-    
-//         const handleInputChange = (e) => {
-//             setQuery(e.target.value);
-//         };
-//         const Header = () => {
-//             const [searchTerm, setSearchTerm] = useState('');
+//   const handleMoviesMenuOpen = (event) => {
+//     setMoviesAnchorEl(event.currentTarget);
+//   };
 
-//     const handleSearch = (event) => {
-//         if (event.key === 'Enter') {
-//             setSearchTerm(event.target.value);
-        
-//     };
-//     return (
-//         <div style={styles.container}>
-//             <input
-//                 type="text"
-//                 value={query}
-//                 onChange={handleInputChange}
-//                 onKeyDown={handleSearch}
-//                 placeholder="Search..."
-//                 style={styles.input}
-//             />
-//             <button onClick={() => navigate(`/moviedetails/${query}`)} style={styles.button}>
-//                 Search
-//             </button>
-//         </div>
-//     );
+//   const handleMoviesMenuClose = () => {
+//     setMoviesAnchorEl(null);
+//   };
+
+//   const handleCategoryClick = (category) => {
+//     navigate(`/movies?category=${category}`);
+//     setMoviesAnchorEl(null);
+//   };
+
+//   return (
+//     <AppBar position="static" sx={{ backgroundColor: 'black' }}>
+//       <Toolbar>
+//         <Typography variant="h6" style={{ flexGrow: 1 }}>
+//           <Link to="/" className="cine-stream-link">
+//             <span className='neon'>Cine</span><span className='flux'>Stream</span>
+//           </Link>
+//         </Typography>
+//         <Button onClick={handleMoviesMenuOpen}>
+//           <span className='act'>Movies</span>
+//         </Button>
+//         <Menu anchorEl={moviesAnchorEl} open={Boolean(moviesAnchorEl)} onClose={handleMoviesMenuClose}>
+//           <MenuItem onClick={() => handleCategoryClick('popular')}>
+//             <span>Popular</span>
+//           </MenuItem>
+//           <MenuItem onClick={() => handleCategoryClick('top_rated')}>
+//             <span>Top Rated</span>
+//           </MenuItem>
+//           <MenuItem onClick={() => handleCategoryClick('now_playing')}>
+//             <span>Now Playing</span>
+//           </MenuItem>
+//           <MenuItem onClick={() => handleCategoryClick('upcoming')}>
+//             <span>Upcoming</span>
+//           </MenuItem>
+//           <MenuItem onClick={() => handleCategoryClick('latest')}>
+//             <span>Latest</span>
+//           </MenuItem>
+//         </Menu>
+//         <Button color="inherit" onClick={handleMenuOpen}>
+//           <span className='act'>Genres</span>
+//         </Button>
+//         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+//           {genres.map((genre) => (
+//             <MenuItem key={genre.id} onClick={handleMenuClose}>
+//               <Link to={`/genre/${genre.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>{genre.name}</Link>
+//             </MenuItem>
+//           ))}
+//         </Menu>
+//         <Button color="inherit">
+//           <Link to="/actors" className='act'><span>Actors</span></Link>
+//         </Button>
+//         <Searchbar /> {/* Add the SearchBar component here */}
+//       </Toolbar>
+//     </AppBar>
+//   );
 // };
 
-
-// const styles = {
-//     container: {
-//         display: 'flex',
-//         alignItems: 'center',
-//         margin: '10px',
-//     },
-//     input: {
-//         flex: 1,
-//         padding: '10px',
-//         fontSize: '16px',
-//         borderRadius: '4px',
-//         border: '1px solid #ccc',
-//         marginRight: '10px',
-//     },
-//     button: {
-//         padding: '10px 20px',
-//         fontSize: '16px',
-//         borderRadius: '4px',
-//         border: 'none',
-//         backgroundColor: '#007BFF',
-//         color: '#fff',
-//         cursor: 'pointer',
-//     },
-// };
-
-
-//     return (
-//         <AppBar position="static" style={{ backgroundColor: 'black' }}>
-//             <Toolbar>
-//                 <Typography variant="h6" style={{ flexGrow: 1, color: 'gold' }}>
-//                     MovieWebsite
-//                 </Typography>
-//                 <Button color="inherit" onClick={handleMenuOpen} style={{ color: 'gold' }}>
-//                     Genres
-//                 </Button>
-//                 <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-//                     {genres.map((genre) => (
-//                         <MenuItem key={genre.id}>{genre.name}</MenuItem>
-//                     ))}
-//                 </Menu>
-//                 <Button color="inherit" onClick={handleMoviesMenuOpen} style={{ color: 'gold' }}>
-//                     Movies
-//                 </Button>
-//                 <Menu anchorEl={moviesAnchorEl} open={Boolean(moviesAnchorEl)} onClose={handleMoviesMenuClose}>
-//                     <MenuItem onClick={() => fetchMovies('top_rated')} style={{ color: 'gold' }}>Top Rated</MenuItem>
-//                     <MenuItem onClick={() => fetchMovies('popular')} style={{ color: 'gold' }}>Popular</MenuItem>
-//                     <MenuItem onClick={() => fetchMovies('latest')} style={{ color: 'gold' }}>Latest</MenuItem>
-//                     <MenuItem onClick={() => fetchMovies('now_playing')} style={{ color: 'gold' }}>Now Playing</MenuItem>
-//                     <MenuItem onClick={() => fetchMovies('upcoming')} style={{ color: 'gold' }}>Upcoming</MenuItem>
-//                 </Menu>
-//                 <Button color="inherit" onClick={() => {}} style={{ color: 'gold' }}>About us</Button>
-//                 <Button color="inherit" onClick={() => {}} style={{ color: 'gold' }}>Contact us</Button>
-//                 <Button color="inherit" onClick={() => {}} style={{ color: 'gold' }}>Actors</Button>
-//                 <TextField
-//                     variant="outlined"
-//                     placeholder="Search..."
-//                     size="small"
-//                     onKeyDown={handleSearch}
-//                     style={{ backgroundColor: 'gold', borderRadius: 4, color: 'black' }}
-//                 />
-//             </Toolbar>
-//         </AppBar>
-//     );
-// };
-
-// export default Navbar,
+// export default Navbar;
 
 import React, { useState, useEffect } from 'react';
-import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, TextField } from '@mui/material';
-import { fetchMovies, fetchActors, apiKey } from '../Util/API';
-import { useNavigate } from 'react-router-dom';
+import { AppBar, Toolbar, Typography, Button, Menu, MenuItem, Box } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { apiKey } from '../Util/API';
+import SearchBar from '../SearchBarPg/SearchBar'; 
 
 const Navbar = () => {
-    const [genres, setGenres] = useState([]);
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [moviesAnchorEl, setMoviesAnchorEl] = useState(null);
-    const [query, setQuery] = useState('');
-    const navigate = useNavigate();
+  const [genres, setGenres] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [moviesAnchorEl, setMoviesAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchGenres = async () => {
-            try {
-                const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
-                setGenres(response.data.genres);
-            } catch (error) {
-                console.error("Error fetching genres:", error);
-            }
-        };
-        fetchGenres();
-    }, []);
-
-    const handleMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
+        setGenres(response.data.genres);
+      } catch (error) {
+        console.error("Error fetching genres:", error);
+      }
     };
+    fetchGenres();
+  }, []);
 
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-    const handleMoviesMenuOpen = (event) => {
-        setMoviesAnchorEl(event.currentTarget);
-    };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
-    const handleMoviesMenuClose = () => {
-        setMoviesAnchorEl(null);
-    };
+  const handleMoviesMenuOpen = (event) => {
+    setMoviesAnchorEl(event.currentTarget);
+  };
 
-    const handleSearch = (event) => {
-        if (event.key === 'Enter') {
-            navigate(`/moviedetails/${query}`);
-        }
-    };
+  const handleMoviesMenuClose = () => {
+    setMoviesAnchorEl(null);
+  };
 
-    const handleInputChange = (event) => {
-        setQuery(event.target.value);
-    };
+  const handleCategoryClick = (category) => {
+    navigate(`/movies?category=${category}`);
+    setMoviesAnchorEl(null);
+  };
 
-    return (
-        <AppBar position="static" style={{ backgroundColor: 'black' }}>
-            <Toolbar>
-                <Typography variant="h6" style={{ flexGrow: 1, color: 'gold' }}>
-                    MovieWebsite
-                </Typography>
-                <Button color="inherit" onClick={handleMenuOpen} style={{ color: 'gold' }}>
-                    Genres
-                </Button>
-                <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                    {genres.map((genre) => (
-                        <MenuItem key={genre.id}>{genre.name}</MenuItem>
-                    ))}
-                </Menu>
-                <Button color="inherit" onClick={handleMoviesMenuOpen} style={{ color: 'gold' }}>
-                    Movies
-                </Button>
-                <Menu anchorEl={moviesAnchorEl} open={Boolean(moviesAnchorEl)} onClose={handleMoviesMenuClose}>
-                    <MenuItem onClick={() => fetchMovies('top_rated')} style={{ color: 'gold' }}>Top Rated</MenuItem>
-                    <MenuItem onClick={() => fetchMovies('popular')} style={{ color: 'gold' }}>Popular</MenuItem>
-                    <MenuItem onClick={() => fetchMovies('latest')} style={{ color: 'gold' }}>Latest</MenuItem>
-                    <MenuItem onClick={() => fetchMovies('now_playing')} style={{ color: 'gold' }}>Now Playing</MenuItem>
-                    <MenuItem onClick={() => fetchMovies('upcoming')} style={{ color: 'gold' }}>Upcoming</MenuItem>
-                </Menu>
-                <Button color="inherit" onClick={() => {}} style={{ color: 'gold' }}>About us</Button>
-                <Button color="inherit" onClick={() => {}} style={{ color: 'gold' }}>Contact us</Button>
-                <Button color="inherit" onClick={() => {}} style={{ color: 'gold' }}>Actors</Button>
-                <TextField
-                    variant="outlined"
-                    placeholder="Search..."
-                    size="small"
-                    value={query}
-                    onChange={handleInputChange}
-                    onKeyDown={handleSearch}
-                    style={{ backgroundColor: 'gold', borderRadius: 4, color: 'black' }}
-                />
-            </Toolbar>
-        </AppBar>
-    );
+  return (
+    <AppBar position="static" sx={{ backgroundColor: 'black' }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <Link to="/" className="cine-stream-link">
+            <span className='neon'>Cine</span><span className='flux'>Stream</span>
+          </Link>
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Button onClick={handleMoviesMenuOpen} sx={{ color: 'white' }}>
+            <span className='act'>Movies</span>
+          </Button>
+          <Menu anchorEl={moviesAnchorEl} open={Boolean(moviesAnchorEl)} onClose={handleMoviesMenuClose}>
+            <MenuItem onClick={() => handleCategoryClick('popular')}>
+              <span>Popular</span>
+            </MenuItem>
+            <MenuItem onClick={() => handleCategoryClick('top_rated')}>
+              <span>Top Rated</span>
+            </MenuItem>
+            <MenuItem onClick={() => handleCategoryClick('now_playing')}>
+              <span>Now Playing</span>
+            </MenuItem>
+            <MenuItem onClick={() => handleCategoryClick('upcoming')}>
+              <span>Upcoming</span>
+            </MenuItem>
+            <MenuItem onClick={() => handleCategoryClick('latest')}>
+              <span>Latest</span>
+            </MenuItem>
+          </Menu>
+          <Button color="inherit" onClick={handleMenuOpen} sx={{ color: 'white' }}>
+            <span className='act'>Genres</span>
+          </Button>
+          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+            {genres.map((genre) => (
+              <MenuItem key={genre.id} onClick={handleMenuClose}>
+                <Link to={`/genre/${genre.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>{genre.name}</Link>
+              </MenuItem>
+            ))}
+          </Menu>
+          <Button color="inherit" sx={{ color: 'white' }}>
+            <Link to="/actors" className='act'><span>Actors</span></Link>
+          </Button>
+          <Box sx={{ ml: 2 }}>
+          <SearchBar />
+          </Box>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Navbar;

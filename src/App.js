@@ -8,8 +8,9 @@ import Actor from './Pages/ActorPg/Actor';
 import GenreMovies from './Pages/GenrePg/Genres';
 import HomePage from './Pages/HomePg/HomePg';
 import MovieDetails from './Pages/SingleMoviePg/SingleMoviesPg';
-import { BrowserRouter as Router, Routes, Route, Switch } from 'react-router-dom';
-import SearchBar from './SearchBarPg/Searchbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SearchBar from './SearchBarPg/SearchBar';
+
 
 function App() {
   return (
