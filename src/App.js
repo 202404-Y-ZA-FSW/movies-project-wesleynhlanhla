@@ -56,7 +56,7 @@ function App() {
         <div>
             <BrowserRouter>
                 <Header />
-                <SearchBar />
+                {/* <SearchBar /> */}
                
                 
                 <Routes>
@@ -64,7 +64,7 @@ function App() {
                     <Route path="/all-movies" element={<Actors />} />
                     <Route path="/moviedetails/:id" element={<MovieDetails />} />
                     <Route path="/genre/:genreId" element={<GenreMovies />} />
-                    <Route path="/genre/:genreId" element={<MoviesDetails />} />
+                    
 
                 </Routes>
                 <Footer />
